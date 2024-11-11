@@ -25,7 +25,8 @@ public class Run  extends baseTest{
     void createProduct() throws InterruptedException {
         new Product(driver).menuProduct();
         new Product(driver).createProduct();
-        new Product(driver).stockProduct();
+        new Product(driver).stockProduct(stockBranch1, stockBranch2);
+        new Product(driver).priceProduct();
     }
     @AfterClass
     void tearDown(){

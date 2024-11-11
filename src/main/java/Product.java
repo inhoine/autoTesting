@@ -19,8 +19,11 @@ public class Product {
     By productName = By.xpath("//input[@name = 'productName']");
     By typeImg = By.xpath("//input[@accept = 'image/jpeg,image/png,image/gif']");
     By fieldstockProduct = By.xpath("(//input[@class='form-control cur-input cur-input--non-unit'])[2]");
+    By nameBranch1 = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[1]");
     By fieldstockProduct2 = By.xpath("(//input[@class='form-control cur-input cur-input--non-unit'])[3]");
-
+    By nameBranch2 = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[2]");
+    By listingPrice = By.xpath("(//input[@class ='form-control cur-input cur-input--unit'])[1]");
+    By sellingPrice = By.xpath("(//input[@class ='form-control cur-input cur-input--unit'])[2]");
 
 
 
@@ -43,31 +46,60 @@ public class Product {
         WebElement inputImg = driver.findElement(typeImg);
         inputImg.sendKeys("C://Users//admin//Desktop//MediaStep//cuahangtienloi//khoidong.png");
     }
-    public void stockProduct (){
+    public void stockProduct (String stockBranch1, String stockBranch2) throws InterruptedException {
         Actions actions = new Actions(driver);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(fieldstockProduct));
+        WebElement fieldstockBranch1 = wait.until(ExpectedConditions.elementToBeClickable(fieldstockProduct));
         try {
-            actions.moveToElement(element).perform();
+            actions.moveToElement(fieldstockBranch1).perform();
         }
         catch (StaleElementReferenceException e) {
-            element = wait.until(ExpectedConditions.elementToBeClickable(fieldstockProduct));
-            actions.moveToElement(element).perform();
+            fieldstockBranch1 = wait.until(ExpectedConditions.visibilityOfElementLocated(fieldstockProduct));
+            actions.moveToElement(fieldstockBranch1).perform();
         }
-        element.sendKeys(Keys.CONTROL + "A",Keys.BACK_SPACE);
-        actions.click(element).perform();
-        actions.sendKeys("5").perform();
+        fieldstockBranch1.sendKeys(Keys.CONTROL + "A",Keys.BACK_SPACE);
+        actions.click(fieldstockBranch1).perform();
+        actions.sendKeys(stockBranch1).perform();
         //Input stock cho branch 2
-        WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(fieldstockProduct2));
+        WebElement fieldstockBranch2 = wait.until(ExpectedConditions.elementToBeClickable(fieldstockProduct2));
+        WebElement textNameBranch = wait.until(ExpectedConditions.elementToBeClickable(nameBranch1));
+        textNameBranch.click();
         try {
-            actions.moveToElement(element1).perform();
+            actions.moveToElement(fieldstockBranch2).perform();
         }
         catch (StaleElementReferenceException e) {
-            element1 = wait.until(ExpectedConditions.elementToBeClickable(fieldstockProduct2));
-            actions.moveToElement(element1).perform();
+            fieldstockBranch2 = wait.until(ExpectedConditions.visibilityOfElementLocated(fieldstockProduct2));
+            actions.moveToElement(fieldstockBranch2).perform();
         }
-        element1.sendKeys(Keys.CONTROL + "A",Keys.BACK_SPACE);
-        actions.click(element1).perform();
-        actions.sendKeys("5").perform();
+        fieldstockBranch2.sendKeys(Keys.CONTROL + "A",Keys.BACK_SPACE);
+        actions.click(fieldstockBranch2).perform();
+        actions.sendKeys(stockBranch2).perform();
+        WebElement textNameBranch2 = wait.until(ExpectedConditions.elementToBeClickable(nameBranch2));
+        textNameBranch2.click();
+    }
+    public void priceProduct(){
+        Actions actions = new Actions(driver);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(listingPrice));
+        try {
+            actions.moveToElement(element).perform();
+        }catch (StaleElementReferenceException e){
+            element = wait.until(ExpectedConditions.elementToBeClickable(listingPrice));
+            actions.moveToElement(element).perform();
+        }
+        element.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+        actions.click(element).perform();
+        actions.sendKeys("450000").perform();
 
+        //InputSellingPrice
+        actions = new Actions(driver);
+        element = wait.until(ExpectedConditions.elementToBeClickable(sellingPrice));
+        try {
+            actions.moveToElement(element).perform();
+        }catch (StaleElementReferenceException e){
+            element = wait.until(ExpectedConditions.elementToBeClickable(sellingPrice));
+            actions.moveToElement(element).perform();
+        }
+        element.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+        actions.click(element).perform();
+        actions.sendKeys("450000").perform();
     }
 }
