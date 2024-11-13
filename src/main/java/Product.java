@@ -4,8 +4,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Product {
+public class Product extends pathFile {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -13,21 +15,6 @@ public class Product {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    By selectMenuProdcut = By.xpath("(//div[@class= ' menu gs-atm__scrollbar-1']/div)[5]");
-    By closePopupVideo = By.xpath("//div[@class = 'v5Um9Ms0fy+rVulr6jyrVQ==']");
-    By createProductbutton = By.xpath("(//button[@class= 'gs-button  gs-button__green gs-button--undefined '])[1]");
-    By productName = By.xpath("//input[@name = 'productName']");
-    By typeImg = By.xpath("//input[@accept = 'image/jpeg,image/png,image/gif']");
-    By fieldstockProduct = By.xpath("(//input[@class='form-control cur-input cur-input--non-unit'])[2]");
-    By nameBranch1 = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[1]");
-    By fieldstockProduct2 = By.xpath("(//input[@class='form-control cur-input cur-input--non-unit'])[3]");
-    By nameBranch2 = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[2]");
-    By listingPrice = By.xpath("(//input[@class ='form-control cur-input cur-input--unit'])[1]");
-    By sellingPrice = By.xpath("(//input[@class ='form-control cur-input cur-input--unit'])[2]");
-
-
-
-
     public void menuProduct(){
         WebElement clickproduct = wait.until(ExpectedConditions.elementToBeClickable(selectMenuProdcut));
         clickproduct.click();
@@ -101,5 +88,43 @@ public class Product {
         element.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
         actions.click(element).perform();
         actions.sendKeys("450000").perform();
+    }
+    public void demension () throws InterruptedException {
+        //Weight
+        WebElement inputWeight = wait.until(ExpectedConditions.visibilityOfElementLocated(fieldWeight));
+        inputWeight.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+        inputWeight.sendKeys("30");
+        //Length
+        WebElement inputLength = wait.until(ExpectedConditions.visibilityOfElementLocated(fieldLength));
+        inputLength.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+        inputLength.sendKeys("5");
+        //Width
+        WebElement inputWidth = wait.until(ExpectedConditions.visibilityOfElementLocated(fieldWidth));
+        inputWidth.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+        inputWidth.sendKeys("5");
+        //Height
+        WebElement inputHeight = wait.until(ExpectedConditions.visibilityOfElementLocated(fieldHeight));
+        inputHeight.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);
+        inputHeight.sendKeys("10");
+        Thread.sleep(1000);
+        WebElement checkonApp = driver.findElement(onApp);
+        checkonApp.click();
+
+    }
+//    public void platForm() {
+//        String action = "check";
+//        switch (action) {
+//            case "check":
+//
+//
+//        }
+//    }
+    public void SaveProduct () {
+        WebElement clickSave = wait.until(ExpectedConditions.elementToBeClickable(btnSaveProduct));
+        clickSave.click();
+    }
+    public void closePopupCreateProduct () {
+        WebElement clickClosebtn = wait.until(ExpectedConditions.elementToBeClickable(btnClosePopupCreateProduct));
+        clickClosebtn.click();
     }
 }
