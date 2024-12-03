@@ -23,5 +23,13 @@ public class Login extends pathFile {
         inputUsername.sendKeys(userName);
         inputPassword.sendKeys(passWord);
         clickLogin.click();
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(getText));
+            System.out.println("Login thanh cong");
+        } catch (Exception e) {
+            // If the element is not found, login failed
+            System.out.println("Login that bai");
+        }
     }
 }

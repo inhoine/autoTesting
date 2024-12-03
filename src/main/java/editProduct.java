@@ -12,6 +12,14 @@ public class editProduct extends pathFile {
     public editProduct(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.navigate().refresh();
+        String mainWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(mainWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
     }
     public void selectItem() {
 //        WebElement clickproduct = wait.until(ExpectedConditions.elementToBeClickable(selectMenuProdcut));
@@ -31,11 +39,11 @@ public class editProduct extends pathFile {
             }
         }
         Actions actions = new Actions(driver);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(listingPrice));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(listingPrice));
         try {
             actions.moveToElement(element).perform();
         }catch (StaleElementReferenceException e){
-            element = wait.until(ExpectedConditions.elementToBeClickable(listingPrice));
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(listingPrice));
             actions.moveToElement(element).perform();
         }
         element.sendKeys(Keys.CONTROL + "A", Keys.BACK_SPACE);

@@ -6,17 +6,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class goWallet {
+public class goWallet extends pathFile {
     WebDriver driver;
     WebDriverWait wait;
     public goWallet(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    By getText = By.xpath("//div[@class = 'title d-none d-lg-block d-md-block']");
-    By icgoWallet = By.xpath("(//div[@id= 'wallet-balance']/div)[2]");
-    By textGowallet = By.xpath("//span[@class= 'q68SgCTxTQYGNh1eF0j62w==']");
-    By TotalgoWallet = By.xpath("//div[@class= ' C0pXmfKbDwobjSqDnn032Q== color-white']");
+
 
     public void eyesWallet(){
         WebElement titlegetText = wait.until(ExpectedConditions.visibilityOfElementLocated(getText));

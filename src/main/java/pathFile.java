@@ -5,6 +5,11 @@ public class pathFile {
     By usernametxt = By.xpath("(//input[@name= 'username'])[1]");
     By pwdtxt = By.xpath("(//input[@name= 'password'])[1]");
     By login = By.xpath("(//button[@type= 'submit'])[1]");
+    //Go Wallet
+    By getText = By.xpath("//div[@class = 'title d-none d-lg-block d-md-block']");
+    By icgoWallet = By.xpath("(//div[@id= 'wallet-balance']/div)[2]");
+    By textGowallet = By.xpath("//span[@class= 'q68SgCTxTQYGNh1eF0j62w==']");
+    By TotalgoWallet = By.xpath("//div[@class= ' C0pXmfKbDwobjSqDnn032Q== color-white']");
     //Create Product
     By selectMenuProdcut = By.xpath("(//div[@class= ' menu gs-atm__scrollbar-1']/div)[5]");
     By closePopupVideo = By.xpath("//div[@class = 'v5Um9Ms0fy+rVulr6jyrVQ==']");
@@ -14,11 +19,17 @@ public class pathFile {
     //Stock
     By fieldstockProduct = By.xpath("(//input[@class='form-control cur-input cur-input--non-unit'])[2]");
     By nameBranch1 = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[1]");
+    //AllFieldStock
+    By allStockOfBranch = By.xpath("//input[@class= 'form-control cur-input cur-input--non-unit']");
     By fieldstockProduct2 = By.xpath("(//input[@class='form-control cur-input cur-input--non-unit'])[3]");
     By nameBranch2 = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[2]");
+    By nameBranch = By.xpath("(//div[@class= 'font-weight-500 col-sm-7'])[1]");
     //Price
     By listingPrice = By.xpath("(//input[@class ='form-control cur-input cur-input--unit'])[1]");
     By sellingPrice = By.xpath("(//input[@class ='form-control cur-input cur-input--unit'])[2]");
+    //xPathAllPrice
+    By allPrice = By.xpath("//input[@class = 'form-control cur-input cur-input--unit']");
+
     //Demension
     By fieldWeight = By.xpath("(//input[@class = 'form-control cur-input '])[1]");
     By fieldLength = By.xpath("(//input[@class = 'form-control cur-input '])[2]");
